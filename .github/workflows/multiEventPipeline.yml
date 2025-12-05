@@ -10,10 +10,11 @@ on:
       - master
     types:
       - closed  
+  
   workflow_dispatch: # Event: whenever a workflow is manually triggered 
 
 jobs:
-  on-push:  # job name 1nd job
+  on-push:  # job name 1st job
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:  # steps to be executed on the job
@@ -27,16 +28,16 @@ jobs:
       - name: "Running on pull request"
         run: echo "running on pull request"
 
-  on-pull-request-closed: 
-    if: github.event.name == 'pull_request' && github.event.action == 'closed'
+  on-pull-request-closed: # job name 3rd job
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps: 
       - name: "Running on pull request closed"
         run: echo "running on pull request closed"      
 
-  workflow_dispatch: # # This enables manual triggering job 3
+  workflow-dispatch: # job name 4th job - This enables manual triggering
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps: 
-     - name: "Running the workflow dispatch"
-       run: echo "Running WorkFlow Dispatch"
+      - name: "Running the workflow dispatch"
+        run: echo "Running WorkFlow Dispatch"
