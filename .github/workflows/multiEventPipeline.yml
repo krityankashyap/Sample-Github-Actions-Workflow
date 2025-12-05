@@ -4,7 +4,10 @@ on:
     branches:
       - master
       - test
-  
+
+  schedule:
+    - corn: "0.10 * * 2,4" # Event: every Tuesday and thursday at 10 AM
+
   pull_request: # Event: Whenever a pull request is made to the repository
     branches:
       - master
@@ -41,3 +44,9 @@ jobs:
     steps: 
       - name: "Running the workflow dispatch"
         run: echo "Running WorkFlow Dispatch"
+
+  on-schedule: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running on Schedule"
+        run: echo "running on"      
