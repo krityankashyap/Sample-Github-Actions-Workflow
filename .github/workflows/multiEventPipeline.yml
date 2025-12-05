@@ -11,16 +11,23 @@ on:
   workflow_dispatch: # Event: whenever a workflow is manually triggered 
 
 jobs:
-  on-push:  # job name
+  on-push:  # job name 1nd job
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:  # steps to be executed on the job
       - name: "Running on master/test push"
         run: echo "running on master/test branch"
 
-  on-pull-request: # job name
+  on-pull-request: # job name 2nd job
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps: # steps to be executed on pull req in the job
       - name: "Running on pull request"
         run: echo "running on pull request"
+
+  workflow_dispatch: # job 3
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps: 
+     - name: "Running the workflow dispatch"
+       run: echo "Running WorkFlow Dispatch"
